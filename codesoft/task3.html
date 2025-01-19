@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #4f4f6b;
+            margin: 0;
+        }
+
+        .calculator-container {
+            background: #f8f8f8;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            width: 360px;
+        }
+
+        .screen {
+            background-color: #333;
+            color: #f4f4f4;
+            font-size: 2.8em;
+            text-align: right;
+            padding: 15px;
+            border-radius: 12px;
+            height: 80px;
+            overflow: hidden;
+        }
+
+        .button-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .button {
+            width: 75px;
+            height: 75px;
+            font-size: 1.7em;
+            background-color: #ececec;
+            border: none;
+            border-radius: 12px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #d3d3d3;
+        }
+
+        .button:active {
+            background-color: #b1b1b1;
+        }
+
+        .operator {
+            background-color: #ff7c6e;
+            color: white;
+        }
+
+        .equals {
+            background-color: #39b54a;
+            color: white;
+        }
+
+        .clear {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="screen" id="outputScreen">0</div>
+        <div class="button-row">
+            <button class="button clear" onclick="resetDisplay()">AC</button>
+            <button class="button operator" onclick="appendOperator('/')">/</button>
+            <button class="button operator" onclick="appendOperator('*')">*</button>
+            <button class="button operator" onclick="appendOperator('-')">-</button>
+        </div>
+        <div class="button-row">
+            <button class="button" onclick="appendCharacter(7)">7</button>
+            <button class="button" onclick="appendCharacter(8)">8</button>
+            <button class="button" onclick="appendCharacter(9)">9</button>
+            <button class="button operator" onclick="appendOperator('+')">+</button>
+        </div>
+        <div class="button-row">
+            <button class="button" onclick="appendCharacter(4)">4</button>
+            <button class="button" onclick="appendCharacter(5)">5</button>
+            <button class="button" onclick="appendCharacter(6)">6</button>
+            <button class="button equals" onclick="calculateResult()">=</button>
+        </div>
+        <div class="button-row">
+            <button class="button" onclick="appendCharacter(1)">1</button>
+            <button class="button" onclick="appendCharacter(2)">2</button>
+            <button class="button" onclick="appendCharacter(3)">3</button>
+            <button class="button" onclick="appendCharacter(0)">0</button>
+        </div>
+        <div class="button-row">
+            <button class="button" onclick="appendCharacter('.')">.</button>
+        </div>
+    </div>
+
+    <script>
+        let currentValue = '';
+        let previousValue = '';
+        let operator = null;
+
+        // Add number or dot to the screen
+        function appendCharacter(value) {
+            const screen = document.getElementById('outputScreen');
+            if (currentValue === '0' && value !== '.') {
+                currentValue = value.toString();
+            } else {
+                currentValue += value.toString();
+            }
+            screen.textContent = currentValue;
+        }
+
+        // Add operator to the screen
+        function appendOperator(op) {
+            if (currentValue === '') return; // Don't allow operator at the beginning
+            if (operator !== null) return; // Prevent multiple operators in a row
+            operator = op;
+            previousValue = currentValue;
+            currentValue = '';
+            document.getElementById('outputScreen').textContent = previousValue + ' ' + operator;
+        }
+
+        // Reset display
+        function resetDisplay() {
+            currentValue = '';
+            previousValue = '';
+            operator = null;
+            document.getElementById('outputScreen').textContent = '0';
+        }
+
+        // Calculate result
+        function calculateResult() {
+            if (previousValue === '' || currentValue === '') return; // Ensure there's a valid calculation
+
+            let result;
+            const num1 = parseFloat(previousValue);
+            const num2 = parseFloat(currentValue);
+
+            switch (operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    if (num2 === 0) {
+                        result = 'Error';
+                    } else {
+                        result = num1 / num2;
+                    }
+                    break;
+                default:
+                    result = 'Error';
+                    break;
+            }
+
+            document.getElementById('outputScreen').textContent = result;
+            currentValue = result.toString();
+            previousValue = '';
+            operator = null;
+        }
+    </script>
+</body>
+</html>

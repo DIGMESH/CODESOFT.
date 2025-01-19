@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovative Landing Page</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Verdana', sans-serif;
+            background: #f8f9fa;
+            color: #2d2d2d;
+        }
+
+        /* Main Container */
+        .landing-page-container {
+            width: 85%;
+            margin: 0 auto;
+        }
+
+        /* Header Section */
+        .header-section {
+            background: linear-gradient(135deg, #7986cb, #4a69bd);
+            color: white;
+            padding: 90px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-section h1 {
+            font-size: 3.2rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            animation: textFadeIn 1s ease-in-out;
+        }
+
+        .header-section p {
+            font-size: 1.3rem;
+            margin-bottom: 45px;
+            animation: fadeInText 1.5s ease-in-out;
+        }
+
+        .cta-button {
+            background: #f44336;
+            color: white;
+            padding: 18px 35px;
+            font-size: 1.1rem;
+            text-decoration: none;
+            border-radius: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, background 0.3s ease;
+            animation: fadeInText 2s ease-in-out;
+        }
+
+        .cta-button:hover {
+            background: #d32f2f;
+            transform: scale(1.1);
+        }
+
+        /* Section Style */
+        .section-block {
+            padding: 75px 0;
+            background-color: #fff;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            margin-bottom: 45px;
+            border-radius: 12px;
+        }
+
+        .section-heading {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 40px;
+            color: #3c5a80;
+        }
+
+        /* Grid System */
+        .feature-grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 0 25px;
+        }
+
+        .feature-grid-item {
+            background-color: #fafafa;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-grid-item:hover {
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px);
+        }
+
+        .feature-grid-item h3 {
+            font-size: 1.7rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-grid-item p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        /* Portfolio Section */
+        .portfolio-gallery {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 45px;
+        }
+
+        .portfolio-item {
+            width: 32%;
+            background-color: #fafafa;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.05);
+        }
+
+        /* Testimonials Section */
+        .testimonial-section {
+            background-color: #f2f3f7;
+            padding: 55px 0;
+        }
+
+        .testimonial-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .testimonial-box h4 {
+            font-size: 1.6rem;
+            margin-bottom: 18px;
+        }
+
+        .testimonial-box p {
+            font-size: 1.1rem;
+            color: #777;
+        }
+
+        /* Pricing Plans Section */
+        .pricing-plans-section {
+            padding: 55px 0;
+            background-color: #4a69bd;
+            color: white;
+        }
+
+        .pricing-option {
+            background-color: #f44336;
+            padding: 35px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-option h3 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+        }
+
+        .pricing-option p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+        }
+
+        .pricing-option a {
+            padding: 12px 30px;
+            background-color: white;
+            color: #f44336;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .pricing-option a:hover {
+            background-color: #f44336;
+            color: white;
+        }
+
+        /* Footer Section */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 25px 0;
+        }
+
+        footer p {
+            font-size: 1rem;
+            margin-bottom: 12px;
+        }
+
+        footer a {
+            color: #f44336;
+            text-decoration: none;
+            padding: 5px 12px;
+            border-radius: 30px;
+            background-color: white;
+            transition: background-color 0.3s ease;
+        }
+
+        footer a:hover {
+            background-color: #f44336;
+            color: white;
+        }
+
+        /* Animations */
+        @keyframes textFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInText {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <section class="header-section">
+        <div class="landing-page-container">
+            <h1>Welcome to the Future of Innovation</h1>
+            <p>Crafting extraordinary digital solutions with creative precision</p>
+            <a href="#cta" class="cta-button">Begin Your Adventure</a>
+        </div>
+    </section>
+
+    <!-- Feature Section -->
+    <section class="section-block">
+        <h2 class="section-heading">Our Unique Offerings</h2>
+        <div class="feature-grid-container">
+            <div class="feature-grid-item">
+                <h3>Visually Striking Designs</h3>
+                <p>We create experiences that are both visually stunning and user-friendly.</p>
+            </div>
+            <div class="feature-grid-item">
+                <h3>Advanced Development</h3>
+                <p>Crafting robust, scalable solutions that fit your needs and goals.</p>
+            </div>
+            <div class="feature-grid-item">
+                <h3>Round-the-Clock Support</h3>
+                <p>Always ready to assist you with unmatched customer service.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section-block">
+        <h2 class="section-heading">Our Latest Creations</h2>
+        <div class="portfolio-gallery">
+            <div class="portfolio-item">
+                <img src="Screenshot (2).png" alt="Project 1">
+            </div>
+            <div class="portfolio-item">
+                <img src="Screenshot (3).png" alt="Project 2">
+            </div>
+            <div class="portfolio-item">
+                <img src="Screenshot (3).png" alt="Project 3">
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonial-section">
+        <h2 class="section-heading">Client Testimonials</h2>
+        <div class="landing-page-container">
+            <div class="testimonial-box">
+                <h4>Michael Johnson</h4>
+                <p>"The team was incredible. They made our vision a reality and beyond expectations. Highly recommended!"</p>
+            </div>
+            <div class="testimonial-box">
+                <h4>Emily Clark</h4>
+                <p>"A pleasure to work with! The attention to detail and support are unmatched."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing-plans-section">
+        <h2 class="section-heading">Flexible Pricing</h2>
+        <div class="landing-page-container">
+            <div class="feature-grid-container">
+                <div class="pricing-option">
+                    <h3>Basic Plan</h3>
+                    <p>Starting at ₹5000</p>
+                    <a href="#cta">Get Started</a>
+                </div>
+                <div class="pricing-option">
+                    <h3>Standard Plan</h3>
+                    <p>Starting at ₹10000</p>
+                    <a href="#cta">Get Started</a>
+                </div>
+                <div class="pricing-option">
+                    <h3>Premium Plan</h3>
+                    <p>Starting at ₹15000</p>
+                    <a href="#cta">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>© 2025 Innovative Solutions. All Rights Reserved.</p>
+        <p><a href="#contact">Contact Us</a></p>
+    </footer>
+
+</body>
+</html>
